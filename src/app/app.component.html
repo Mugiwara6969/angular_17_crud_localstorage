@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row pt-3">
-    <div class="col-6">
-      <h4>Student Portal</h4>
+    <div class="col-9 ">
+      <h4>Patient Management System</h4>
     </div>
-    <div class="col-6 text-end">
+    <div class="col-12 text-end">
       <button class="btn btn-outline-success" (click)="openModel()">Add New</button>
     </div>
   </div>
-  @if (studentList.length !== 0) {
+  @if (patientList.length !== 0) {
   <div class="row">
-    @for (item of studentList; track $index) {
+    @for (item of patientList; track $index) {
     <div class="col-3">
       <div class="card">
         <div class="card-header">
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="card-body">
-          <p> {{item.city}} , {{item.state}} , {{item.pincode}}</p>
+          <p> {{item.Sex}} , {{item.medicine}} , {{item.disease}}</p>
           <p> {{item.address}}</p>
         </div>
         <div class="card-footer text-center">
@@ -33,7 +33,7 @@
             </div>
             <div class="col-6">
               <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delet</button>
+              <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delete</button>
             </div>
           </div>
 
@@ -57,53 +57,54 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Create New Student</h4>
+        <h4 class="modal-title">Add New Patient</h4>
         <button type="button" class="btn-close" (click)="closeModel()"></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-8">
             <label for="">Name</label>
-            <input type="text" [(ngModel)]="studentObj.name" class="form-control" placeholder="Name">
+            <input type="text" [(ngModel)]="patientObj.name" class="form-control" placeholder="Name">
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label for="">Mobile No</label>
-            <input type="text" [(ngModel)]="studentObj.mobileNo" class="form-control" placeholder="Mobile">
+            <input type="text" [(ngModel)]="patientObj.mobileNo" class="form-control" placeholder="Mobile">
           </div>
           <div class="col-6">
             <label for="">Email</label>
-            <input type="text" [(ngModel)]="studentObj.email" class="form-control" placeholder="Email">
+            <input type="text" [(ngModel)]="patientObj.email" class="form-control" placeholder="Email">
           </div>
         </div>
         <div class="row">
           <div class="col-4">
-            <label for="">City</label>
-            <input type="text" [(ngModel)]="studentObj.city" class="form-control" placeholder="City">
+            <label for="">Sex</label>
+            <input type="text" [(ngModel)]="patientObj.Sex" class="form-control" placeholder="F/M">
           </div>
           <div class="col-4">
-            <label for="">State</label>
-            <input type="text" [(ngModel)]="studentObj.state" class="form-control" placeholder="State">
+            <label for="">Disease</label>
+            <input type="text" [(ngModel)]="patientObj.disease" class="form-control" placeholder="Type of Disease">
           </div>
           <div class="col-4">
-            <label for="">Pin Code</label>
-            <input type="text" [(ngModel)]="studentObj.pincode" class="form-control" placeholder="Pin Code">
+            <label for="">Medicine</label>     
+             <textarea rows="3" [(ngModel)]="patientObj.medicine"  class="form-control" ></textarea>
+
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="">Address</label>
-            <textarea rows="3" [(ngModel)]="studentObj.address" class="form-control"></textarea>
+            <textarea rows="3" [(ngModel)]="patientObj.address" class="form-control"></textarea>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="closeModel()">Close</button>
-        @if (studentObj.id ==0) {
-          <button type="button" class="btn btn-primary" (click)="saveStudent()">Save Student</button>
+        @if (patientObj.id ==0) {
+          <button type="button" class="btn btn-primary" (click)="savePatient()">Save </button>
         } @else {
-          <button type="button" class="btn btn-success" (click)="updateStud()">Update Student</button>
+          <button type="button" class="btn btn-success" (click)="updatePatient()">Update </button>
         }
        
       </div>
